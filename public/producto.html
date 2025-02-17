@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Pociones Mágicas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .producto-contenedor {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .pocion-imagen {
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .selector-pocion {
+            margin: 20px 0;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .cantidad-contenedor {
+            margin: 20px 0;
+        }
+
+        .cantidad-input {
+            width: 60px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .descripcion {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+
+        .boton-comprar {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+        }
+
+        .boton-comprar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="producto-contenedor">
+        <div class="pocion-imagen">🧪</div>
+        
+        <select class="selector-pocion" id="selectorPocion">
+            <option value="0">Poción de Curación</option>
+            <option value="1">Poción de Fuerza</option>
+            <option value="2">Poción de Invisibilidad</option>
+            <option value="3">Poción de Amor</option>
+        </select>
+
+        <div class="cantidad-contenedor">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" 
+                   class="cantidad-input" 
+                   id="cantidad" 
+                   value="1" 
+                   min="1">
+        </div>
+
+        <div class="descripcion" id="descripcion">
+            Una poción curativa que restaura la salud y vitalidad.
+        </div>
+
+        <button class="boton-comprar">Comprar Ahora</button>
+    </div>
+
+    <script>
+        const pociones = [
+            {
+                nombre: "Poción de Curación",
+                descripcion: "Restaura 50 puntos de salud inmediatamente. Ideal para combates y emergencias.",
+                emoji: "🧪"
+            },
+            {
+                nombre: "Poción de Fuerza",
+                descripcion: "Aumenta tu fuerza física un 200% durante 1 hora. ¡Cuidado con los efectos secundarios!",
+                emoji: "💪"
+            },
+            {
+                nombre: "Poción de Invisibilidad",
+                descripcion: "Te hace invisible completamente durante 15 minutos. Perfecta para misiones sigilosas.",
+                emoji: "👻"
+            },
+            {
+                nombre: "Poción de Amor",
+                descripcion: "Atrae el amor verdadero. Efectos permanentes (resultados pueden variar).",
+                emoji: "💖"
+            }
+        ];
+
+        const selectorPocion = document.getElementById('selectorPocion');
+        const descripcion = document.getElementById('descripcion');
+        const imagenPocion = document.querySelector('.pocion-imagen');
+
+        selectorPocion.addEventListener('change', function() {
+            const pocionSeleccionada = pociones[this.value];
+            descripcion.textContent = pocionSeleccionada.descripcion;
+            imagenPocion.textContent = pocionSeleccionada.emoji;
+        });
+    </script>
+</body>
+</html>
