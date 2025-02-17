@@ -3,80 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Pociones Mágicas</title>
+    <title>🧪 Tienda de Pociones Mágicas 🧪</title>
     <style>
+        /* 🎨 Diseño General */
         body {
-            font-family: 'Arial', sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
+            font-family: 'Trebuchet MS', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
             padding: 20px;
-            background-color: #f0f0f0;
         }
 
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 📦 Contenedor Principal */
         .producto-contenedor {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.15);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            max-width: 550px;
+            margin: auto;
+            text-align: center;
+            backdrop-filter: blur(8px);
         }
 
-        .pocion-imagen {
-            width: 200px;
-            height: 200px;
-            background-color: #eee;
-            margin: 0 auto 20px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
+        /* 🧪 Imagen de la Poción */
+        .pocion-imagen img {
+            width: 300px;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .pocion-imagen img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 🎚 Selector de Pociones */
         .selector-pocion {
-            margin: 20px 0;
-            padding: 10px;
             width: 100%;
-            font-size: 16px;
+            padding: 15px;
+            font-size: 20px;
+            border-radius: 8px;
+            border: none;
+            background: white;
+            color: black;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        .cantidad-contenedor {
-            margin: 20px 0;
-        }
-
-        .cantidad-input {
-            width: 60px;
-            padding: 5px;
-            font-size: 16px;
+        /* 📝 Descripción y Efectos */
+        .descripcion, .efectos {
+            font-size: 20px; /* Aumentado */
+            font-weight: bold;
+            margin: 15px 0;
         }
 
         .descripcion {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            min-height: 100px;
+            color: #ffd700;
         }
 
-        .boton-comprar {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 30px;
-            border: none;
+        .efectos {
+            color: #ff8c00;
+        }
+
+        /* 💲 Precio y Stock */
+        .precio, .stock, .total {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 12px 0;
+        }
+
+        .precio {
+            color: #ffeb3b;
+        }
+
+        .stock {
+            color: #48bb78;
+        }
+
+        .total {
+            color: #facc15;
+        }
+
+        .alerta-stock {
+            color: #ff4d4d;
+            font-size: 22px;
+            font-weight: bold;
+            display: none;
+            margin: 15px 0;
+        }
+
+        /* 📋 Cantidad */
+        .cantidad-contenedor {
+            margin: 20px 0;
+            font-size: 22px;
+        }
+
+        .cantidad-input {
+            width: 80px;
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
+            border: 2px solid #ddd;
+        }
+
+        /* 🛒 Botón de Comprar */
+        .boton-comprar {
+            background: #ffcc00;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 16px;
             width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s ease;
         }
 
         .boton-comprar:hover {
-            background-color: #45a049;
+            background: #ffd700;
+            box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.8);
+            transform: scale(1.05);
         }
+
+        /* 📱 Diseño Responsivo */
+        @media (max-width: 600px) {
+            .producto-contenedor {
+                width: 95%;
+            }
+
+            .pocion-imagen img {
+                width: 250px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .descripcion, .efectos {
+                font-size: 18px;
+            }
+        }
+
     </style>
 </head>
 <body>
+    <h1>🧙‍♂️ Tienda de Pociones Mágicas 🧙‍♂️</h1>
     <div class="producto-contenedor">
-        <div class="pocion-imagen">🧪</div>
-        
+        <div class="pocion-imagen">
+            <img src="imagenes/heal.webp" id="pocionImg" alt="Imagen de poción">
+        </div>
+
         <select class="selector-pocion" id="selectorPocion">
             <option value="0">Poción de Curación</option>
             <option value="1">Poción de Fuerza</option>
@@ -84,55 +173,56 @@
             <option value="3">Poción de Amor</option>
         </select>
 
+        <div class="efectos" id="efectos"></div>
+        <div class="precio" id="precio"></div>
+        <div class="stock" id="stock"></div>
+        <div class="alerta-stock" id="alertaStock">¡Stock insuficiente!</div>
+
         <div class="cantidad-contenedor">
             <label for="cantidad">Cantidad:</label>
-            <input type="number" 
-                   class="cantidad-input" 
-                   id="cantidad" 
-                   value="1" 
-                   min="1">
+            <input type="number" class="cantidad-input" id="cantidad" value="1" min="1" max="10">
         </div>
 
-        <div class="descripcion" id="descripcion">
-            Una poción curativa que restaura la salud y vitalidad.
-        </div>
+        <div class="total" id="total"></div>
+        <div class="descripcion" id="descripcion"></div>
 
-        <button class="boton-comprar">Comprar Ahora</button>
+        <button class="boton-comprar" id="botonComprar">🛒 Comprar Ahora ✨</button>
     </div>
 
     <script>
         const pociones = [
-            {
-                nombre: "Poción de Curación",
-                descripcion: "Restaura 50 puntos de salud inmediatamente. Ideal para combates y emergencias.",
-                emoji: "🧪"
-            },
-            {
-                nombre: "Poción de Fuerza",
-                descripcion: "Aumenta tu fuerza física un 200% durante 1 hora. ¡Cuidado con los efectos secundarios!",
-                emoji: "💪"
-            },
-            {
-                nombre: "Poción de Invisibilidad",
-                descripcion: "Te hace invisible completamente durante 15 minutos. Perfecta para misiones sigilosas.",
-                emoji: "👻"
-            },
-            {
-                nombre: "Poción de Amor",
-                descripcion: "Atrae el amor verdadero. Efectos permanentes (resultados pueden variar).",
-                emoji: "💖"
-            }
+            { nombre: "Poción de Curación", descripcion: "Restaura 50 puntos de salud.", efectos: "Efecto inmediato", precio: 50, stock: 15, imagen: "imagenes/heal.webp" },
+            { nombre: "Poción de Fuerza", descripcion: "Aumenta la fuerza 200% por 1 hora.", efectos: "Efecto progresivo", precio: 75, stock: 8, imagen: "imagenes/fuerza.webp" },
+            { nombre: "Poción de Invisibilidad", descripcion: "Te hace invisible por 15 min.", efectos: "Efecto inmediato", precio: 120, stock: 5, imagen: "imagenes/invi.webp" },
+            { nombre: "Poción de Amor", descripcion: "Atrae el amor verdadero.", efectos: "Efecto permanente", precio: 200, stock: 3, imagen: "imagenes/love.webp" }
         ];
 
-        const selectorPocion = document.getElementById('selectorPocion');
-        const descripcion = document.getElementById('descripcion');
-        const imagenPocion = document.querySelector('.pocion-imagen');
+        const elementos = {
+            selector: document.getElementById('selectorPocion'),
+            descripcion: document.getElementById('descripcion'),
+            imagen: document.getElementById('pocionImg'),
+            efectos: document.getElementById('efectos'),
+            precio: document.getElementById('precio'),
+            stock: document.getElementById('stock'),
+            cantidad: document.getElementById('cantidad'),
+            total: document.getElementById('total'),
+            botonComprar: document.getElementById('botonComprar'),
+            alertaStock: document.getElementById('alertaStock')
+        };
 
-        selectorPocion.addEventListener('change', function() {
-            const pocionSeleccionada = pociones[this.value];
-            descripcion.textContent = pocionSeleccionada.descripcion;
-            imagenPocion.textContent = pocionSeleccionada.emoji;
-        });
+        function actualizarInterfaz() {
+            const pocion = pociones[elementos.selector.value];
+            elementos.imagen.src = pocion.imagen;
+            elementos.descripcion.textContent = pocion.descripcion;
+            elementos.efectos.textContent = pocion.efectos;
+            elementos.precio.textContent = `💰 Precio: ${pocion.precio} oro`;
+            elementos.stock.textContent = `📦 Disponibles: ${pocion.stock}`;
+            elementos.total.textContent = `🛒 Total: ${pocion.precio * elementos.cantidad.value} oro`;
+        }
+
+        elementos.selector.addEventListener('change', actualizarInterfaz);
+        elementos.cantidad.addEventListener('input', actualizarInterfaz);
+        actualizarInterfaz();
     </script>
 </body>
 </html>
