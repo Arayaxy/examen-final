@@ -77,16 +77,32 @@ button:hover {
     box-shadow: 0 5px 15px rgba(91, 33, 182, 0.3);
 }
 
+/* Modifica el estilo del mensaje */
 #message {
     text-align: center;
     margin-top: 20px;
-    color: #553c9a;
-    font-weight: 500;
     padding: 15px;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    color: white;
 }
 
+#message.show {
+    opacity: 1;
+    max-height: 100px;
+    margin-bottom: 15px;
+}
+
+#message.success {
+    background: #4CAF50;
+}
+
+#message.error {
+    background: #f44336;
+}
 /* Efecto de carga en el botón */
 button:active {
     transform: scale(0.98);
